@@ -37,4 +37,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar; // Usa punto y coma en lugar de coma aquí
+export default NavBar; 

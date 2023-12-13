@@ -1,9 +1,8 @@
-//prueba 3________________________________________________
-
 import React, { useState } from "react";
 import NavBar from "./NavBar";
 import {Link} from "react-router-dom"
 import remove from "../assets/remove.png"
+import {postTickets} from "../redux/actions/actions"
 
 
 const NewTicket = () => {
@@ -18,7 +17,23 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
    }
 //____________________BOTON___________________________________________
    const handleSubmit= async (evento)=>{
-evento.preventDefault();
+        evento.preventDefault();
+        try {
+          const formData = {
+            title: formData.titulo,
+            description: formData.descripción,
+          };
+          const response = await postTickets(formData);
+          // Si la llamada es exitosa, actualiza el estado local y pasa los datos al padre
+          onAddTask(response.payload);
+          // Limpia el formulario o realiza cualquier otra acción necesaria
+          setFormData({
+            titulo: "",
+            descripción: "",
+          });
+        } catch (error) {
+           console.error("Error al agregar tarea:", error);
+        }
    }
    //_________________________________________________________
   return (

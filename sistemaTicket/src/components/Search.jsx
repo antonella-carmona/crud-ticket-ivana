@@ -1,11 +1,8 @@
 import Actualizar from "../assets/circular.svg";
 import {Link} from "react-router-dom";
-// import React, { useState } from "react";
-// import NewTicket from "./NewTicket";
 
 const Search = () => {
   // const [open, setOpen] = useState(false);
-  
 
   
   return (
