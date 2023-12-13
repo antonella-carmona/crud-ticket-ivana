@@ -21,11 +21,11 @@ const rootReducer= (state= inicialState, action) =>{
           ...state,
           tickesById: action.payload,
         };
-        case POSTTICKETS:
-            
-              return { ...state } 
-              
-            ;
+      case POSTTICKETS:
+        return { ...state, allTickes: [...state.allTickes, action.payload] };
+
+      default:
+        return {...state};
     }
 }
 

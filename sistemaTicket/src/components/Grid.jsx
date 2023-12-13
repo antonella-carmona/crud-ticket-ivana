@@ -1,16 +1,14 @@
 import React, { useState } from 'react'
-// let data = [
-//   { codigo: 1, nombre: "Item 1", porDefecto: "Sí" },
-//   { codigo: 2, nombre: "Item 2", porDefecto: "No" },
-//   // ... más elementos ...
-// ];
+import { useSelector } from "react-redux";
 
-const Grid = ({dataValue}) => {
 
-    console.log("que llego en el grid?-->", dataValue)
+const Grid = () => {
+const allTickes = useSelector((state) => state.allTickes);
+console.log("Tickets en el Grid:", allTickes);
+   
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4; // Número de elementos por página
-const [tasks, setTasks] = useState([]);
+
   // Calcula el índice inicial y final para la paginación
   const indexOfLastItem = currentPage * itemsPerPage; // 1x4
   const indexOfFirstItem = indexOfLastItem - itemsPerPage; //4-4
@@ -20,12 +18,7 @@ const [tasks, setTasks] = useState([]);
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
 
-  const handleAddTask = (task) => {
-    // Agrega la nueva tarea al estado
-    // setTasks([...tasks, dataValue]);
-    setTasks([...tasks, ...dataValue.split("")]);
-  };
-
+ 
   return (
     <div className="items-center">
       <p>Sin filtros aplicados</p>
@@ -63,10 +56,10 @@ const [tasks, setTasks] = useState([]);
             </thead>
             {/* cuerpo del cuadro */}
             <tbody className="divide-y divide-gray-200">
-              {tasks.map((task, index) => (
+              {allTickes.map((ticket, index) => (
                 <tr key={index}>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700">
-                    {task}
+                    {ticket.titulo}
                   </td>
                 </tr>
               ))}
@@ -89,9 +82,9 @@ const [tasks, setTasks] = useState([]);
                   fill="currentColor"
                 >
                   <path
-                    // fill-rule="evenodd"
-                    // d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
-                    // clip-rule="evenodd"
+                  // fill-rule="evenodd"
+                  // d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+                  // clip-rule="evenodd"
                   />
                 </svg>
               </a>
@@ -141,9 +134,9 @@ const [tasks, setTasks] = useState([]);
                   fill="currentColor"
                 >
                   <path
-                    // fill-rule="evenodd"
-                    // d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-                    // clip-rule="evenodd"
+                  // fill-rule="evenodd"
+                  // d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                  // clip-rule="evenodd"
                   />
                 </svg>
               </a>

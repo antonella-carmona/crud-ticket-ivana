@@ -1,16 +1,25 @@
 import React, { useState } from "react";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
 import NavBar from "./NavBar";
 import {Link} from "react-router-dom"
 import remove from "../assets/remove.png"
 import {postTickets} from "../redux/actions/actions"
+import Modal from "react-modal";
 
+Modal.setAppElement("#root");
 
 const NewTicket = () => {
+ const dispatch = useDispatch();
+ const navigate = useNavigate();
    const [formData, setFormData] = useState({
      titulo: "",
      descripción: "",
      // Otros campos del formulario
    });
+
+  
+   const [modalIsOpen, setModalIsOpen] = useState(false);
 //_____________________INPUT_________________________________________
    const handleChange = (evento)=>{
 setFormData({...formData, [evento.target.id]:evento.target.value})
@@ -18,31 +27,36 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
 //____________________BOTON___________________________________________
    const handleSubmit= async (evento)=>{
         evento.preventDefault();
+        if(formData){
+
         try {
-          const formData = {
-            title: formData.titulo,
-            description: formData.descripción,
-          };
-          const response = await postTickets(formData);
-          // Si la llamada es exitosa, actualiza el estado local y pasa los datos al padre
-          onAddTask(response.payload);
+          // Si la llamada es exitosa, actualiza el estado local y pasa los datos al estado padre
+          dispatch(postTickets({ ...formData }));
+          console.log("se despacha en NewTickets-->", {...formData})
           // Limpia el formulario o realiza cualquier otra acción necesaria
-          setFormData({
-            titulo: "",
-            descripción: "",
-          });
+          setModalIsOpen(true);
         } catch (error) {
            console.error("Error al agregar tarea:", error);
         }
+      }else{
+        alert("Faltan algunos campos");
+      }
    }
+   const closeModal = () => {
+    console.log("Cerrando modal...");
+     setModalIsOpen(false);
+     navigate.push("/"); // Redirige a la página de inicio después de cerrar el modal
+   };
    //_________________________________________________________
   return (
     <>
       <NavBar />
 
       <section className="bg-gray-100 h-screen flex items-center justify-center">
-        <div className="rounded-lg bg-white p-8 shadow-lg w-full sm:max-w-xl
-        relative">
+        <div
+          className="rounded-lg bg-white p-8 shadow-lg w-full sm:max-w-xl
+        relative"
+        >
           <Link to="/">
             <div className="absolute top-0 left-0 p-1">
               <button
@@ -68,6 +82,7 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
                 id="titulo"
                 value={formData.titulo}
                 onChange={handleChange}
+                required
               />
             </div>
 
@@ -83,15 +98,16 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
                 id="descripción"
                 value={formData.descripción}
                 onChange={handleChange}
+                required
               ></textarea>
             </div>
             {/* ------------------------------------ */}
             <div>
-              <label class="sr-only" htmlFor="estado">
+              <label className="sr-only" htmlFor="estado">
                 Estado
               </label>
               <input
-                class="w-full rounded-lg border border-black p-3 text-sm"
+                className="w-full rounded-lg border border-black p-3 text-sm"
                 placeholder="Estado"
                 type="text"
                 id="estado"
@@ -99,11 +115,11 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
             </div>
             {/* ---------------------------------------- */}
             <div>
-              <label class="sr-only" htmlFor="categoria">
+              <label className="sr-only" htmlFor="categoria">
                 Categoría
               </label>
               <input
-                class="w-full rounded-lg border border-black p-3 text-sm"
+                className="w-full rounded-lg border border-black p-3 text-sm"
                 placeholder="Categoría"
                 type="text"
                 id="categoría"
@@ -111,11 +127,11 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
             </div>
             {/* ----------------------------------------- */}
             <div>
-              <label class="sr-only" htmlFor="fecha">
+              <label className="sr-only" htmlFor="fecha">
                 Fecha programada
               </label>
               <input
-                class="w-full rounded-lg border border-black p-3 text-sm "
+                className="w-full rounded-lg border border-black p-3 text-sm "
                 placeholder="Fecha programada"
                 type="date"
                 id="date"
@@ -127,37 +143,37 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
               {/* ------------------- */}
               <div>
                 <input
-                  class="peer sr-only"
+                  className="peer sr-only"
                   id="option1"
                   type="radio"
-                  tabindex="-1"
+                  tabIndex="-1"
                   name="option"
                 />
 
                 <label
-                  for="option1"
-                  class="block w-full rounded-lg border border-gray-700 p-3 text-gray-600 hover:border-black peer-checked:border-black peer-checked:bg-blue-900 peer-checked:text-white bg-blue-500"
-                  tabindex="0"
+                  htmlFor="option1"
+                  className="block w-full rounded-lg border border-gray-700 p-3 text-gray-600 hover:border-black peer-checked:border-black peer-checked:bg-blue-900 peer-checked:text-white bg-blue-500"
+                  tabIndex="0"
                 >
-                  <span class="text-sm"> Seleccionar todo </span>
+                  <span className="text-sm"> Seleccionar todo </span>
                 </label>
               </div>
               {/* -------------------- */}
               <div>
                 <input
-                  class="peer sr-only"
+                  className="peer sr-only"
                   id="option2"
                   type="radio"
-                  tabindex="-1"
+                  tabIndex="-1"
                   name="option"
                 />
 
                 <label
-                  for="option2"
-                  class="block w-full rounded-lg border border-gray-700 p-3 text-gray-600 hover:border-black peer-checked:border-black peer-checked:bg-red-900 peer-checked:text-white bg-red-500"
-                  tabindex="0"
+                  htmlFor="option2"
+                  className="block w-full rounded-lg border border-gray-700 p-3 text-gray-600 hover:border-black peer-checked:border-black peer-checked:bg-red-900 peer-checked:text-white bg-red-500"
+                  tabIndex="0"
                 >
-                  <span class="text-sm"> Limpiar selección</span>
+                  <span className="text-sm"> Limpiar selección</span>
                 </label>
               </div>
               {/* -------------------- */}
@@ -174,6 +190,36 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
             </div>
           </form>
         </div>
+        {/* --------------MODAL-------------- */}
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={closeModal}
+          contentLabel="Mensaje Modal"
+          style={{
+            overlay: {
+              backgroundColor: "rgba(0, 0, 0, 0.5)", // Fondo oscuro tras el modal
+            },
+            content: {
+              width: "auto", // Ancho del modal
+              maxWidth: "300px", // Ancho máximo del modal
+              maxHeight: "300px",
+              height: "auto",
+              margin: "auto", // Centrar el modal horizontalmente
+              padding: "20px", // Espaciado interno del contenido del modal
+              borderRadius: "8px", // Bordes redondeados
+              display: "flex", // Utiliza display flex
+              alignItems: "center", // Centra verticalmente el contenido
+              flexDirection: "column", // Alinea el contenido verticalmente
+              border: "solid"
+            },
+          }}
+        >
+          <h2>Ticket agregado</h2>
+          
+          <button onClick={()=>{closeModal()}} className="border">
+            Aceptar
+          </button>
+        </Modal>
       </section>
     </>
   );
