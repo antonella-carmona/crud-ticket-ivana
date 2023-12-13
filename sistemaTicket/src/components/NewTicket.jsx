@@ -43,9 +43,9 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
       }
    }
    const closeModal = () => {
-    console.log("Cerrando modal...");
+   
      setModalIsOpen(false);
-     navigate.push("/"); // Redirige a la página de inicio después de cerrar el modal
+     navigate("/"); // Redirige a la página de inicio después de cerrar el modal
    };
    //_________________________________________________________
   return (
@@ -198,25 +198,30 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
           style={{
             overlay: {
               backgroundColor: "rgba(0, 0, 0, 0.5)", // Fondo oscuro tras el modal
+              zIndex: 1000, // Fondo oscuro tras el modal
             },
             content: {
               width: "auto", // Ancho del modal
-              maxWidth: "300px", // Ancho máximo del modal
-              maxHeight: "300px",
-              height: "auto",
+              maxWidth: "300px", // Ancho máximo del modal (ajusta según tus necesidades)
+              maxHeight: "200px", // Altura máxima del modal (ajusta según tus necesidades)
               margin: "auto", // Centrar el modal horizontalmente
               padding: "20px", // Espaciado interno del contenido del modal
               borderRadius: "8px", // Bordes redondeados
               display: "flex", // Utiliza display flex
               alignItems: "center", // Centra verticalmente el contenido
               flexDirection: "column", // Alinea el contenido verticalmente
-              border: "solid"
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Sombra
             },
           }}
         >
-          <h2>Ticket agregado</h2>
-          
-          <button onClick={()=>{closeModal()}} className="border">
+          <h2 className="text-xl font-bold mb-4 pb-5">Ticket agregado</h2>
+
+          <button
+            onClick={() => {
+              closeModal();
+            }}
+            className="border px-4 py-2 rounded bg-blue-500 text-white"
+          >
             Aceptar
           </button>
         </Modal>
