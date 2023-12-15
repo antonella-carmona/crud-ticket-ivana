@@ -132,7 +132,12 @@
 
 // ---------------------------------------
 import tickets from "../../../tickets.json";
-import { GETALLTICKETS, GETBYID, POSTTICKETS } from "../actionsTypes/index";
+import {
+  GETALLTICKETS,
+  GETBYID,
+  POSTTICKETS,
+  SEARCHNAME,
+} from "../actionsTypes/index";
 import axios from "axios";
 //______________________________________________________________
 export const getAlltickets = () => {
@@ -188,4 +193,23 @@ export const postTickets = (ticket) => {
     }
   };
 };
+
+//_______________________________SEARCH____________________________________
+export const getAllByName = (name) =>{
+    return async (dispatch)=> {
+        try {
+            const response = await axios.get(
+              `http://localhost:3001/tickets/search?name=${name}`
+            );
+            return dispatch({
+              type: SEARCHNAME,
+              payload: response.data,
+            });
+        } catch (error) {
+            alert(error.response.data.error)
+            
+        }
+        
+      }
+}
 

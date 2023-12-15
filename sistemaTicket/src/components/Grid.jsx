@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-// import { getAlltickets } from '../redux/actions/actions';
+import { getAlltickets } from '../redux/actions/actions';
 
 
 const Grid = () => {
   const dispatch = useDispatch();
 const allTickes = useSelector((state) => state.allTickes);
-console.log("Tickets en el Grid del state global reducer:", allTickes);
 
-// useEffect(()=>{
-// dispatch(getAlltickets());
-// },[dispatch]);
+
+useEffect(()=>{
+dispatch(getAlltickets());
+},[dispatch]);
    
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4; // Número de elementos por página
-   const [selectedRows, setSelectedRows] = useState([]);
+   const [selectedRows, setSelectedRows] = useState([]);//selección fila verde
   
-
+//_____________PAGINACIÓN___________________________________
   // Calcula el índice inicial y final para la paginación
   const indexOfLastItem = currentPage * itemsPerPage; // 1x4
   const indexOfFirstItem = indexOfLastItem - itemsPerPage; //4-4
 //   const currentItems = setTasks.slice(indexOfFirstItem, indexOfLastItem);
-
 
   // Función para cambiar la página
   const paginate = (pageNumber) => setCurrentPage(pageNumber);

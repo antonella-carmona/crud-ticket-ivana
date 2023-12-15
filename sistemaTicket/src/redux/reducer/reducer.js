@@ -1,10 +1,15 @@
-import {GETALLTICKETS, GETBYID, POSTTICKETS} from "../actionsTypes/index";
+import {
+  GETALLTICKETS,
+  GETBYID,
+  POSTTICKETS,
+  SEARCHNAME,
+} from "../actionsTypes/index";
 
 
 //arrays para reservar los stados globales
 let inicialState = {
   copyAlltickets: [], //--> copia para que no se pisen
-  allTickes: [], // --> trae todos los tickets//Usa los datos del archivo JSON como estado inicial
+  allTickes: [], // --> trae todos los tickets
   tickesById: [{}], //--> trae tickets por id
   myPostTickets: [], //--> tickets creados aca
 };
@@ -16,7 +21,7 @@ const rootReducer= (state= inicialState, action) =>{
         return {
           ...state,
           allTickes:  action.payload,
-          copyAlltickets: action.payload,
+          // copyAlltickets: action.payload,
         };
         //______________________________________________________
       case GETBYID:
@@ -33,6 +38,12 @@ const rootReducer= (state= inicialState, action) =>{
             allTickes: [...state.allTickes, newTicket],
             // myPostTickets: [...state.myPostTickets, newTicket],
           };
+    //______________________________________________________________
+    case SEARCHNAME: return {
+      ...state,
+      allTickes: action.payload,
+    };
+
     //______________________________________________________________
       default:
         return { ...state };

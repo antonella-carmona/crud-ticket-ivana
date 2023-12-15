@@ -1,12 +1,35 @@
+import { useState } from "react";
 import Actualizar from "../assets/circular.svg";
 import {Link} from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getAlltickets, getAllByName } from "../redux/actions/actions";
 
 const Search = () => {
-  // const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
+  console.log("search input", search)
+  // console.log("las byName", getAllByName)
+  //________________________________________________
+  const handleName = (event) => {
+    setSearch(event.target.value.toLowerCase());
 
-  
+    if (!event.target.value) {
+      dispatch(getAlltickets());
+    }
+  };
+  //________________________________________________
+  //_________FN BOTON________________
+  const handlerSubmit = (event) => {
+    event.preventDefault();
+    dispatch(getAllByName(search));
+  };
+  //____________________________________
+
   return (
-    <form className="flex items-center justify-between mt-7 px-8 pt-0">
+    <form
+      className="flex items-center justify-between mt-7 px-8 pt-0"
+      onSubmit={handlerSubmit}
+    >
       {/* Estados a la izquierda */}
       <div className="flex items-center  ">
         <h1 className="text-gray-700 font-bold text-xl"></h1>
@@ -25,7 +48,7 @@ const Search = () => {
           id="dropdown-button"
           data-dropdown-toggle="dropdown"
           className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-e-0 border-gray-300 dark:border-gray-700 dark:text-white rounded-s-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800"
-          type="button"
+          type="submit"
         >
           Buscar{" "}
         </button>
@@ -35,9 +58,11 @@ const Search = () => {
           id="search-dropdown"
           className="block p-2.5 w-80 z-20 text-sm text-gray-900 bg-gray-50 rounded-e-lg rounded-s-gray-100 rounded-s-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500"
           placeholder="Search"
+          value={search}
+          onChange={handleName}
         />
       </div>
-
+      {/* ------------------------------------------------------------------------------------- */}
       {/* Agregar y Circ a la derecha */}
       <div className="flex items-center ">
         <button
