@@ -82,7 +82,7 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
                 className="w-full rounded-lg border border-black p-3 text-sm"
                 placeholder="Titulo"
                 type="text"
-                id="titulo"
+                id="título"
                 value={formData.título}
                 onChange={handleChange}
                 required

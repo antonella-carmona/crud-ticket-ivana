@@ -9,7 +9,7 @@ import axios from "axios"
 
 // ----------------------------------------
 //Al establecer axios.defaults.baseURL, todas las solicitudes que realices con Axios utilizarán esta URL como base
-axios.defaults.baseURL = "https://ivana.ispbrain.io";
+// axios.defaults.baseURL = "https://ivana.ispbrain.io";
 // ----------------------------------------------
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

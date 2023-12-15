@@ -18,7 +18,7 @@ const postTickets = async (req, res) => {
       categoría,
       date
     );
-    console.log("APAPAPAPA->", response)
+   
     return res.status(200).json(response);
   } catch (error) {
     return res.status(400).json({ error: error.message });
@@ -26,5 +26,5 @@ const postTickets = async (req, res) => {
 };
 
 module.exports = {
-  postTickets,
+  postTickets
 };

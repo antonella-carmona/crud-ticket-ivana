@@ -11,12 +11,14 @@ let inicialState = {
 
 const rootReducer= (state= inicialState, action) =>{
     switch (action.type) {
+      //_______________________________________________________
       case GETALLTICKETS:
         return {
           ...state,
           allTickes:  action.payload,
           copyAlltickets: action.payload,
         };
+        //______________________________________________________
       case GETBYID:
         return {
           ...state,
@@ -25,11 +27,11 @@ const rootReducer= (state= inicialState, action) =>{
         //_________________________________________________________
       case POSTTICKETS:
         const newTicket = action.payload;
-         console.log("entro nuevo ticket:", newTicket);
+         console.log("entro nuevo ticket reducer:", newTicket);
           return {
             ...state,
             allTickes: [...state.allTickes, newTicket],
-            myPostTickets: [...state.myPostTickets, newTicket],
+            // myPostTickets: [...state.myPostTickets, newTicket],
           };
     //______________________________________________________________
       default:

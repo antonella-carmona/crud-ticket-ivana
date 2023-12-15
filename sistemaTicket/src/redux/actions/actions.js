@@ -133,14 +133,14 @@
 // ---------------------------------------
 import tickets from "../../../tickets.json";
 import { GETALLTICKETS, GETBYID, POSTTICKETS } from "../actionsTypes/index";
+import axios from "axios";
 //______________________________________________________________
 export const getAlltickets = () => {
   
   return async (dispatch) => {
     try {
-      // Simula la respuesta de la API utilizando los datos del archivo JSON
-      const response = tickets;
-      
+      const response = await axios.get("http://localhost:3001/tickets");
+
       return dispatch({
         type: GETALLTICKETS,
         payload: response.data,
@@ -169,34 +169,19 @@ export const getById = (id) => {
   };
 };
 //_____________________________________________________________________________
-// export const postTickets = (ticket) => {
-//   console.log("que llego en postTickets action? -->", ticket);
-//   return async (dispatch) => {
-//     try {
-//       // Simula la respuesta de la API utilizando los datos del archivo JSON
-//       // const response = await axios.post("/tickets", ticket);
-//       // Utiliza los datos del archivo JSON en lugar de la respuesta de la API real
-//       const newTicket = { id: tickets.data.length + 1, ...ticket };
-// console.log("llego el posteo?-->", newTicket)
-//       return dispatch({
-//         type: POSTTICKETS,
-//         payload: newTicket,
-//       });
-//     } catch (error) {
-//       console.error("Error posting ticket:", error);
-//     }
-//   };
-// };
 
 export const postTickets = (ticket) => {
-  console.log("que llego en postTickets action? -->", ticket);
+
   return async (dispatch) => {
     try {
-      const newTicket = await axios.post("/tickets", ticket);;
-      console.log("llego el posteo?-->", newTicket);
+      const newTicket = await axios.post(
+        "http://localhost:3001/tickets",
+        ticket
+      );;
+      console.log("llego el posteo?-->", newTicket.data);
       return dispatch({
         type: POSTTICKETS,
-        payload: newTicket,
+        payload: newTicket.data,
       });
     } catch (error) {
       console.error("Error posting ticket:", error);
