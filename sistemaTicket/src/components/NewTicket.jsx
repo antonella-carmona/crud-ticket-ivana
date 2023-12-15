@@ -15,6 +15,9 @@ const NewTicket = () => {
    const [formData, setFormData] = useState({
      titulo: "",
      descripción: "",
+     estado: "",
+     categoría: "",
+     date:"",
      // Otros campos del formulario
    });
 
@@ -111,6 +114,9 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
                 placeholder="Estado"
                 type="text"
                 id="estado"
+                onChange={handleChange}
+                required
+                value={formData.estado}
               />
             </div>
             {/* ---------------------------------------- */}
@@ -123,6 +129,9 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
                 placeholder="Categoría"
                 type="text"
                 id="categoría"
+                value={formData.categoría}
+                onChange={handleChange}
+                required
               />
             </div>
             {/* ----------------------------------------- */}
@@ -135,6 +144,9 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
                 placeholder="Fecha programada"
                 type="date"
                 id="date"
+                value={formData.date}
+                onChange={handleChange}
+                required
               />
             </div>
             {/* ---------------------------------------- */}

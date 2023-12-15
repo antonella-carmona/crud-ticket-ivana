@@ -4,8 +4,7 @@ import burgerMenu from "../assets/icon-menu.svg";
 const NavBar = () => {
   return (
     <header
-      className="flex place-content-between items-center  bg-gray-300 p-4
-    "
+      className="flex place-content-between items-center  bg-gray-300 p-4 "
     >
       <div>
         <h1 className="w-35 h-38 font-bold text-2xl ">

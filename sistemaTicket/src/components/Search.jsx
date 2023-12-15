@@ -6,10 +6,10 @@ const Search = () => {
 
   
   return (
-    <form className="flex items-center justify-between mt-7">
+    <form className="flex items-center justify-between mt-7 px-8 pt-0">
       {/* Estados a la izquierda */}
       <div className="flex items-center  ">
-        <h1 className="text-gray-700 font-bold text-xl">Estados</h1>
+        <h1 className="text-gray-700 font-bold text-xl"></h1>
       </div>
 
       {/* Buscar y Input*/}

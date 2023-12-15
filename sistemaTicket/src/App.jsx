@@ -6,6 +6,7 @@
 import Home from "./components/Home";
 import NewTicket from "./components/NewTicket";
 import { Routes, Route } from "react-router-dom";
+import StatesAndCategories from "./components/StatesAndCategories";
 
 
 
@@ -19,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/agregar" element={<NewTicket />} />
+        <Route path="/estados y categorias" element={<StatesAndCategories/>}/>
       </Routes>
     </main>
   );

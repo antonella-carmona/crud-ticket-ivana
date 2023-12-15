@@ -1,0 +1,75 @@
+
+{
+  "meta": {
+    "filtered_total": 15,
+    "pagination": {
+      "limit": 10,
+      "current": 1,
+      "page_total": 2
+    }
+  },
+  "data": [
+    {
+      "id": 1,
+      "título": "Ticket 1",
+      "descripción": "Descripción del Ticket 1",
+      "estado": "Abierto"
+    },
+    {
+      "id": 2,
+      "título": "Ticket 2",
+      "descripción": "Descripción del Ticket 2",
+      "estado": "En Proceso"
+    },
+    {
+      "id": 3,
+      "título": "Ticket 3",
+      "descripción": "Descripción del Ticket 3",
+      "estado": "Cerrado"
+    },
+    {
+      "id": 4,
+      "título": "Ticket 4",
+      "descripción": "Descripción del Ticket 4",
+      "estado": "Abierto"
+    },
+    {
+      "id": 5,
+      "título": "Ticket 5",
+      "descripción": "Descripción del Ticket 5",
+      "estado": "En Proceso"
+    },
+    {
+      "id": 6,
+      "título": "Ticket 6",
+      "descripción": "Descripción del Ticket 6",
+      "estado": "Cerrado"
+    },
+    {
+      "id": 7,
+      "título": "Ticket 7",
+      "descripción": "Descripción del Ticket 7",
+      "estado": "Abierto"
+    },
+    {
+      "id": 8,
+      "título": "Ticket 8",
+      "descripción": "Descripción del Ticket 8",
+      "estado": "En Proceso"
+    },
+    {
+      "id": 9,
+      "título": "Ticket 9",
+      "descripción": "Descripción del Ticket 9",
+      "estado": "Cerrado"
+    },
+    {
+      "id": 10,
+      "título": "Ticket 10",
+      "descripción": "Descripción del Ticket 10",
+      "estado": "Abierto"
+    }
+  
+    
+  ]
+}
