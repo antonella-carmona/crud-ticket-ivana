@@ -11,12 +11,13 @@ let inicialState = {
   copyAlltickets: [], //--> copia para que no se pisen
   allTickes: [], // --> trae todos los tickets
   tickesById: [{}], //--> trae tickets por id
-  myPostTickets: [], //--> tickets creados aca
+
 };
 
 const rootReducer= (state= inicialState, action) =>{
     switch (action.type) {
       //_______________________________________________________
+      //ANDA OK
       case GETALLTICKETS:
         return {
           ...state,
@@ -24,19 +25,21 @@ const rootReducer= (state= inicialState, action) =>{
           // copyAlltickets: action.payload,
         };
         //______________________________________________________
+        // NO PROBADO
       case GETBYID:
         return {
           ...state,
           tickesById: action.payload,
         };
         //_________________________________________________________
+        //ANDA OK
       case POSTTICKETS:
         const newTicket = action.payload;
          console.log("entro nuevo ticket reducer:", newTicket);
           return {
             ...state,
             allTickes: [...state.allTickes, newTicket],
-            // myPostTickets: [...state.myPostTickets, newTicket],
+           
           };
     //______________________________________________________________
     case SEARCHNAME: return {

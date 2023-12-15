@@ -4,7 +4,7 @@ import NavBar from './NavBar';
 import back from "../assets/atras-vaciar.png";
 import { Link } from 'react-router-dom';
 
-
+//NO TERMINADO FUNCIONAMIENTO COMPLETO
 const StatesAndCategories = () => {
   return (
     <>

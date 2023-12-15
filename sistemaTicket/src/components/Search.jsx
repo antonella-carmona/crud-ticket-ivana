@@ -8,7 +8,7 @@ const Search = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   console.log("search input", search)
-  // console.log("las byName", getAllByName)
+
   //________________________________________________
   const handleName = (event) => {
     setSearch(event.target.value.toLowerCase());
