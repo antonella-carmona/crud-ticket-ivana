@@ -123,7 +123,7 @@ const handleCheckboxChange = (index) => {
                   </td>
 
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700 border border-gray-400 text-center align-middle">
-                    {ticket.titulo}
+                    {ticket.título}
                   </td>
                   <td className="whitespace-nowrap px-4 py-2 text-gray-700 border border-gray-400 text-center align-middle">
                     {ticket.descripción}

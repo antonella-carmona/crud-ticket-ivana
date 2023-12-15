@@ -13,10 +13,6 @@ const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
 
-//____________________________DEPLOY___________________________________________________
-// const { DB_USER, DB_PASSWORD, DB_HOST, DB_DATABASE, PORT } = process.env;
-
-//postgres:MgCN35CzbJr92iPZScsu@containers-us-west-70.railway.app:6957/railway
 
 
 //_______________________________________________________________________________
@@ -48,8 +44,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 // Para relacionarlos hacemos un destructuring
 const { Ticket } = sequelize.models;
 
-// Establecer relación en Ticket (asumiendo que cada ticket pertenece a un usuario)
-Ticket.belongsTo(Ticket, { foreignKey: 'usuarioId' });
+// Establecer relación en Ticket con otros modelos
+// Ticket.belongsTo(Ticket, { foreignKey: 'usuarioId' });
 
 
 module.exports = {

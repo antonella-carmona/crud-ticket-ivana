@@ -24,11 +24,11 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      categoria: {
+      categoría: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      fecha: {
+      date: {
         type: DataTypes.STRING,
         allowNull: false,
       },

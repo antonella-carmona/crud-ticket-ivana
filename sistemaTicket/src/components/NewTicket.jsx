@@ -13,7 +13,7 @@ const NewTicket = () => {
  const dispatch = useDispatch();
  const navigate = useNavigate();
    const [formData, setFormData] = useState({
-     titulo: "",
+     título: "",
      descripción: "",
      estado: "",
      categoría: "",
@@ -83,7 +83,7 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
                 placeholder="Titulo"
                 type="text"
                 id="titulo"
-                value={formData.titulo}
+                value={formData.título}
                 onChange={handleChange}
                 required
               />
