@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from "react-redux";
-import { getAlltickets } from '../redux/actions/actions';
+import { deleteTickets, getAlltickets } from '../redux/actions/actions';
 
 
 const Grid = () => {
@@ -39,6 +39,19 @@ const handleCheckboxChange = (index) => {
   }
   setSelectedRows(newSelectedRows);
 };
+
+//___________funcion para delete
+  const handleDelete = async () => {
+    try {
+      const response = await deleteTickets(rowData_id);
+      // dispatch(fetchLabelsAccessList());
+      console.log("Successfully removed", response);
+      // toast.success("Successfully removed");
+      // closeEditForm(false);
+    } catch (error) {
+      console.log("Error al eliminar");
+    }
+  };
 //_________________________________________________________________
  
   return (

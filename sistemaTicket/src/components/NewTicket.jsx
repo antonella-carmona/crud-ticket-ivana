@@ -192,13 +192,25 @@ setFormData({...formData, [evento.target.id]:evento.target.value})
             </div>
             {/* ------------------------------ */}
             <div className="mt-4">
+                <svg
+                  width="96"
+                  height="96"
+                  viewBox="0 0 96 96"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M24,78c0,4.968 4.029,9 9,9h30c4.968,0 9-4.032 9-9l6-48h-60l6,48zm33-39h6v39h-6v-39zm-12,0h6v39h-6v-39zm-12,0h6v39h-6v-39zm43.5-21h-19.5c0,0-1.344-6-3-6h-12c-1.659,0-3,6-3,6h-19.5c-2.487,0-4.5,2.013-4.5,4.5s0,4.5 0,4.5h66c0,0 0-2.013 0-4.5s-2.016-4.5-4.5-4.5z" />
+                </svg>
+           
+            </div>
+            {/* ---------- */}
+
+            <div className="mt-4">
               <button
                 type="submit"
                 className="inline-block w-full rounded-lg bg-blue-500 px-5 py-3 font-medium text-white sm:w-auto border border-black"
               >
                 +Agregar
               </button>
-              {/* ---------------------- */}
             </div>
           </form>
         </div>

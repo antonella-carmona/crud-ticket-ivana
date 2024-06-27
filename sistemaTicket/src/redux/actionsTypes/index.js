@@ -2,3 +2,4 @@ export const GETALLTICKETS = "GETALLTICKETS";
 export const GETBYID = "GETBYID";
 export const POSTTICKETS = "POSTTICKETS";
 export const SEARCHNAME ="SEARCHNAME";
+export const DELETE_TICKETS = "DELETE_TICKETS";

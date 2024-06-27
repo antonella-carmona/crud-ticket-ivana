@@ -3,6 +3,7 @@ import {
   GETBYID,
   POSTTICKETS,
   SEARCHNAME,
+  DELETE_TICKETS
 } from "../actionsTypes/index";
 
 
@@ -46,6 +47,11 @@ const rootReducer= (state= inicialState, action) =>{
       ...state,
       allTickes: action.payload,
     };
+    // _________________________________________________________
+case DELETE_TICKETS: return {
+  ...state,
+  allTickes: action.payload,
+};
 
     //______________________________________________________________
       default:
